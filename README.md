@@ -1,6 +1,6 @@
 # webchat
 
-A simple webchat widget to connect with a chatbot. Forked from [react-chat-widget](https://github.com/Wolox/react-chat-widget)
+A simple webchat widget to connect with a Rasa chatbot the CSG way. Forked from [rasa-webchat](https://github.com/mrbot-ai/rasa-webchat)
 ## Features
 
 - Text Messages
