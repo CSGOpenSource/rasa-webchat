@@ -203,7 +203,7 @@ emit('bot_uttered', message, room=socket_id)
 message = {
       "data":{
         "customField1": 'anything you want',
-        "customField2": 'other custom data, 
+        "customField2": 'other custom data,
       }
     }
 emit('bot_uttered', message, room=socket_id)
@@ -310,3 +310,5 @@ RUN mkdir -p /root/.npm
 [@Hub4IT](https://github.com/Hub4IT)
 [@dliuproduction](https://github.com/dliuproduction)
 [@MatthieuJnon](https://github.com/MatthieuJnon)
+
+<!-- This is a commit test. -->
