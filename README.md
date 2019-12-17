@@ -1,15 +1,16 @@
-# webchat
+# CSG WebChat
 
 A simple webchat widget to connect with a Rasa chatbot the CSG way. Forked from [rasa-webchat](https://github.com/mrbot-ai/rasa-webchat)
+
 ## Features
 
-- Text Messages
-- Quick Replies
-- Images and Videos
-- Snippet style for links (only as responses for now)
-- Markdown support
-- Easy to import in a script tag or as a React Component
-- Persistent sessions
+* Text Messages
+* Quick Replies
+* Images and Videos
+* Snippet style for links (only as responses for now)
+* Markdown support
+* Easy to import in a script tag or as a React Component
+* Persistent sessions
 
 ![demonstration](./assets/chat-demonstration.gif)
 
@@ -17,88 +18,116 @@ A simple webchat widget to connect with a Rasa chatbot the CSG way. Forked from 
 
 ### In a `<script>` tag
 
-In your `<body/>`:
-```javascript
-<div id="webchat"/>
-<script src="https://storage.googleapis.com/mrbot-cdn/webchat-0.5.8.js"></script>
-<script>
-  WebChat.default.init({
-    selector: "#webchat",
-    initPayload: "/get_started",
-    interval: 1000, // 1000 ms between each message
-    customData: {"userId": "123"}, // arbitrary custom data. Stay minimal as this will be added to the socket
-    socketUrl: "http://localhost:5500",
-    socketPath: "/socket.io/",
-    title: "Title",
-    subtitle: "Subtitle",
-    inputTextFieldHint: "Type a message...",
-    connectingText: "Waiting for server...",
-    hideWhenNotConnected: true,
-    fullScreenMode: false,
-    profileAvatar: "http://to.avat.ar",
-    openLauncherImage: 'myCustomOpenImage.png',
-    closeLauncherImage: 'myCustomCloseImage.png',
-    params: {
-      images: {
-        dims: {
-          width: 300,
-          height: 200,
-        }
-      },
-      storage: "local"
-    },
-  })
-</script>
+In your `<body/>` :
+
+``` javascript
+< div id = "webchat" / >
+    <
+    script src = "https://storage.googleapis.com/mrbot-cdn/webchat-0.5.8.js" > < /script> <
+script >
+    WebChat.default.init({
+        selector: "#webchat",
+        initPayload: "/get_started",
+        interval: 1000, // 1000 ms between each message
+        customData: {
+            "userId": "123"
+        }, // arbitrary custom data. Stay minimal as this will be added to the socket
+        socketUrl: "http://localhost:5500",
+        socketPath: "/socket.io/",
+        title: "Title",
+        subtitle: "Subtitle",
+        inputTextFieldHint: "Type a message...",
+        connectingText: "Waiting for server...",
+        hideWhenNotConnected: true,
+        fullScreenMode: false,
+        profileAvatar: "http://to.avat.ar",
+        openLauncherImage: 'myCustomOpenImage.png',
+        closeLauncherImage: 'myCustomCloseImage.png',
+        params: {
+            images: {
+                dims: {
+                    width: 300,
+                    height: 200,
+                }
+            },
+            storage: "local"
+        },
+    }) <
+    /script>
 ```
 
 About images: `width` and `height` define the size in pixels that images in messages are crop-scaled to. If not present, the image will scale to the maximum width of the container and the image.
 
-It is recommended to use a particular version (i.e. "webchat-<version>.js") however the file "webchat-latest.js"
+It is recommended to use a particular version (i.e."webchat-<version>.js") however the file "webchat-latest.js"
 is also available and is updated continuously with the latest version.
 
 ### As a React component
 
 Install the package from GitHub by running:
-```bash
+
+``` bash
 npm install mrbot-ai/rasa-webchat
 ```
 
 Then once it is installed it can be implemented as follows.
 
-```javascript
-import { Widget } from 'rasa-webchat';
+``` javascript
+import {
+    Widget
+} from 'rasa-webchat';
 
 function CustomWidget = () => {
-  return (
-    <Widget
-      interval={2000}
-      initPayload={"/get_started"}
-      socketUrl={"http://localhost:5500"}
-      socketPath={"/socket.io/"}
-      customData={{"userId": "123"}} // arbitrary custom data. Stay minimal as this will be added to the socket
-      title={"Title"}
-      inputTextFieldHint={"Type a message..."}
-      connectingText={"Waiting for server..."}
-      hideWhenNotConnected
-      embedded={true}
-      openLauncherImage="myCustomOpenImage.png"
-      closeLauncherImage="myCustomCloseImage.png"
-      params={{
-        images: {
-          dims: {
-            width: 300,
-            height: 200
-          }
-        },
-        storage: "local"
-      }}
-      customComponent={ (messageData) => (<div>Custom React component</div>) }
-    />
-  )
-}
+    return ( <
+            Widget interval = {
+                2000
+            }
+            initPayload = {
+                "/get_started"
+            }
+            socketUrl = {
+                "http://localhost:5500"
+            }
+            socketPath = {
+                "/socket.io/"
+            }
+            customData = {
+                {
+                    "userId": "123"
+                }
+            } // arbitrary custom data. Stay minimal as this will be added to the socket
+            title = {
+                "Title"
+            }
+            inputTextFieldHint = {
+                "Type a message..."
+            }
+            connectingText = {
+                "Waiting for server..."
+            }
+            hideWhenNotConnected embedded = {
+                true
+            }
+            openLauncherImage = "myCustomOpenImage.png"
+            closeLauncherImage = "myCustomCloseImage.png"
+            params = {
+                {
+                    images: {
+                        dims: {
+                            width: 300,
+                            height: 200
+                        }
+                    },
+                    storage: "local"
+                }
+            }
+            customComponent = {
+                (messageData) => ( < div > Custom React component < /div>) } / >
+                )
+            }
 ```
 
-- Make sure to have the prop `embedded`
+* Make sure to have the prop `embedded` 
+
 set to `true` if you don't want to see the launcher.
 
 ### Backend
@@ -107,14 +136,15 @@ set to `true` if you don't want to see the launcher.
 
 Use the SocketIOInput channel: See [instructions in the Rasa Core documentation](https://rasa.com/docs/core/connectors/#socketio-connector)
 
-If you want to process `customData` in Rasa Core you have to [create a new channel](https://rasa.com/docs/core/connectors/#custom-channels). Use channel `rasa_core.channels.socketio` as a template for your new channel. In such channel `customData` can be retrieved via `data['customData']`. Then you can  modify `sender_id`, save `customData` to the database, fill slots or whatever you need to with your additional data.
+If you want to process `customData` in Rasa Core you have to [create a new channel](https://rasa.com/docs/core/connectors/#custom-channels). Use channel `rasa_core.channels.socketio` as a template for your new channel. In such channel `customData` can be retrieved via `data['customData']` . Then you can  modify `sender_id` , save `customData` to the database, fill slots or whatever you need to with your additional data.
 
 #### Others
+
 Your backend must expose a socket with [socket.io](http://socket.io)
 
 ##### Receiving messages from the chat
 
-```python
+``` python
 @socketio.on('user_uttered')
     def handle_message(message):
         # do something
@@ -124,13 +154,13 @@ Your backend must expose a socket with [socket.io](http://socket.io)
 
 ###### sending plain text
 
-```python
+``` python
 emit('bot_uttered', {"text": "hello"}, room=session_id)
 ```
 
 ###### sending quick replies
 
-```python
+``` python
 message = {
   "text": "Happy?",
   "quick_replies":[
@@ -145,7 +175,7 @@ emit('bot_uttered', message, room=socket_id)
 Admittedly a bit far fetched, thinking that Snippets would evolve to carousels
 of generic templates :)
 
-```python
+``` python
 message = {
   "attachment":{
     "type":"template",
@@ -169,7 +199,7 @@ emit('bot_uttered', message, room=socket_id)
 
 ###### sending a Video Message
 
-```python
+``` python
 message = {
   "attachment":{
     "type":"video",
@@ -184,7 +214,7 @@ emit('bot_uttered', message, room=socket_id)
 
 ###### sending an Image Message
 
-```python
+``` python
 message = {
       "attachment":{
         "type":"image",
@@ -199,7 +229,7 @@ emit('bot_uttered', message, room=socket_id)
 
 ###### sending a message with custom data
 
-```python
+``` python
 message = {
       "data":{
         "customField1": 'anything you want',
@@ -215,10 +245,9 @@ emit('bot_uttered', message, room=socket_id)
 
 `storage` specifies the location where the the conversation and state of the WebChat is stored in the browser's storage.
 
-`storage: "session"` defines the state to be stored in the session storage. The session storage persists on reload of the page, and is cleared after the browser or tab is closed, or when `sessionStorage.clear()`is called.
+`storage: "session"` defines the state to be stored in the session storage. The session storage persists on reload of the page, and is cleared after the browser or tab is closed, or when `sessionStorage.clear()` is called.
 
-`storage: "local"` defines the state to be stored in the local stoage. The local storage persists after the the browser is closed, and is cleared when the cookies of the browser are cleared, or when `localStorage.clear()`is called.
-
+`storage: "local"` defines the state to be stored in the local stoage. The local storage persists after the the browser is closed, and is cleared when the cookies of the browser are cleared, or when `localStorage.clear()` is called.
 
 ### Sending a message on page load
 
@@ -228,7 +257,7 @@ When reconnecting to an existing chat session, the bot will send a message conta
 
 **Note :** this is an **experimental** feature  
 
-If you add this prop to the component or to the init script, `docViewer=true` , this will treat links in received messages as links to a document ( `.pdf .doc .xlsx` etc. ) and will open them in a popup using `https://docs.google.com/viewer` service
+If you add this prop to the component or to the init script, `docViewer=true` , this will treat links in received messages as links to a document ( `.pdf .doc .xlsx` etc.) and will open them in a popup using `https://docs.google.com/viewer` service
 
 ## API
 
@@ -242,12 +271,11 @@ If you add this prop to the component or to the init script, `docViewer=true` , 
 | WebChat.hide()          | Hide the chat widget                                                                                               |
 | WebChat.isVisible()     | Get the shown/hidden state of the widget                                                                           |
 
-
-
 ## Styles
 
 hierarchy:
-```
+
+``` 
 .conversation-container
   |-- .header
         |-- .title
@@ -294,16 +322,16 @@ hierarchy:
 ## Usage with Docker
 
 Since you have to install the package from GitHub, npm will clone the repo to the global .npm directory before
-building the module in your node_modules directory. For this reason docker will have trouble installing the package,
+building the module in your node_modules directory. For this reason docker will have trouble installing the package, 
 of course the global .npm directory doesn't exist in the container. To solve this simply add the following line
 in your Dockerfile before the `RUN npm install` command
 
-```docker
+``` docker
 RUN mkdir -p /root/.npm
 ```
 
-
 ## Contributors
+
 [@PHLF](https://github.com/phlf)
 [@znat](https://github.com/znat)
 [@TheoTomalty](https://github.com/TheoTomalty)
@@ -311,4 +339,5 @@ RUN mkdir -p /root/.npm
 [@dliuproduction](https://github.com/dliuproduction)
 [@MatthieuJnon](https://github.com/MatthieuJnon)
 
-<!-- This is a commit test. -->
+<!-- This is a commit test.-->
+
