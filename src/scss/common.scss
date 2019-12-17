@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
-$roboto: 'Roboto', serif;  
+$roboto: "Roboto", serif;
 
 @mixin message-bubble($color, $textColor) {
   background-color: $color;
@@ -13,16 +13,16 @@ $roboto: 'Roboto', serif;
 }
 
 @mixin borderless-message-bubble($color, $textColor) {
-    border-color: $color;
-    border-radius: 10px;
-    color: $textColor;
-    border-style: solid;
-    padding: 15px;
-    max-width: 215px;
-    max-height: 1em;
-    text-align: center;
-    font-family: $roboto;
-  }
+  border-color: $color;
+  border-radius: 10px;
+  color: $textColor;
+  border-style: solid;
+  padding: 15px;
+  max-width: 215px;
+  max-height: 1em;
+  text-align: center;
+  font-family: $roboto;
+}
 
 @mixin widget-container-fs {
   height: 100%;
@@ -43,7 +43,7 @@ $roboto: 'Roboto', serif;
 
 @mixin close-button-fs {
   @include center;
-  background-color: $blue-1;
+  background-color: #ee3534;
   border: 0;
   position: absolute;
   right: 10px;

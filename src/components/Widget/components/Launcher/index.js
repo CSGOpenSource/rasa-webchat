@@ -16,6 +16,8 @@ const Launcher = ({
 }) => {
   const className = ['launcher'];
   if (isChatOpen) className.push('hide-sm');
+  className.push('shake');
+  if (isChatOpen) className.pop('shake')
   if (fullScreenMode) className.push(`full-screen${isChatOpen ? '  hide' : ''}`);
   return (
     <button

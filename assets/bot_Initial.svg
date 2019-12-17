@@ -1,0 +1,20 @@
+<svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <defs>
+  <filter id="svg_1_blur">
+   <feGaussianBlur stdDeviation="1" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect filter="url(#svg_1_blur)" rx="18" stroke="#999999" id="svg_1" height="106.000001" width="321.000016" y="80.453124" x="94" stroke-width="1.5" fill="#e5e5e5"/>
+  <text font-style="normal" xml:space="preserve" text-anchor="start" font-family="Oswald, sans-serif" font-size="21" id="svg_2" y="135.453125" x="145.5" stroke-width="0" stroke="#999999" fill="#000000">I am your CSG bot</text>
+ </g>
+</svg>

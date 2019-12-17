@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import headerImage from 'assets/CSGNew.png';
 import close from 'assets/clear-button.svg';
+import headerlogo from 'assets/headerlogo.png';
 import './style.scss';
 
 const Header = ({
@@ -25,15 +26,16 @@ const Header = ({
           />
         </button>
       }
+      <img src={headerImage} className="headImage"></img>
       <h4 className="title">{title}</h4>
       {subtitle && <span>{subtitle}</span>}
     </div>
-  {
-    !connected &&
-    <span className="loading">
-      {connectingText}
-    </span>
-  }
+    {
+      !connected &&
+      <span className="loading">
+        {connectingText}
+      </span>
+    }
   </div>;
 
 Header.propTypes = {

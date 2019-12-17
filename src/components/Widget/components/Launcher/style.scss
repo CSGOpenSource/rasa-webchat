@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $blue-1;
+  background-color: #ee3524;
   border: 0;
   border-radius: 50%;
   box-shadow: 0px 2px 10px 1px $grey-3;
@@ -18,19 +18,23 @@
   &:focus {
     outline: none;
   }
-  
+
+  &:hover {
+    background-color: #ee3524;
+  }
+
   &.hide {
-    display: none
+    display: none;
   }
 
   &.full-screen {
     @include launcher-fs;
   }
-  
+
   img {
-    width: 70%;
+    width: 80%;
     max-height: 70%;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -52,5 +56,37 @@
 
   .hide-sm {
     display: none;
+  }
+}
+
+.shake {
+  animation: shake-animation 2s ease infinite;
+  transform-origin: 50% 50%;
+
+  @keyframes shake-animation {
+    0% {
+      transform: translate(0, 0);
+    }
+    1.78571% {
+      transform: translate(5px, 0);
+    }
+    3.57143% {
+      transform: translate(0, 0);
+    }
+    5.35714% {
+      transform: translate(5px, 0);
+    }
+    7.14286% {
+      transform: translate(0, 0);
+    }
+    8.92857% {
+      transform: translate(5px, 0);
+    }
+    10.71429% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
 }
